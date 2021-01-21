@@ -1,0 +1,307 @@
+@font-face {
+  font-family: SF Pro, sans-serif;
+  src: url("./fonts/SFProDisplay-Regular.woff"), url("./fonts/SFProDisplay-Regular.woff2");
+}
+
+$red: #D2001C;
+$black: #222222;
+$ghost: #BDBDBD;
+$shadow: 0 4px 48px rgba(0, 0, 0, 0.16);
+
+%content{
+  width: 1228px;
+  margin-left: auto;
+  margin-right: auto;
+}
+%os {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+body {
+  padding-top: 12px;
+  background-color: #E5E5E5;
+}
+
+.header {
+  background-color: #fff;
+  box-shadow: $shadow;
+    &-top {
+      background-color: #FED600;
+      &-content {
+        @extend %content;
+        padding: 7px 14px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .contacts {
+        &-item {
+          @extend %os;
+          display: inline-block;
+          font-weight: 600;
+          &.city {
+            img {
+              margin-left: 5px;
+              cursor: pointer;
+            }
+          }
+          &.phone {
+            margin-left: 25px;
+          }
+          &.schedule {
+            margin-left: 20px;
+          }
+        }
+      }
+
+      .feedback {
+        &-item {
+          @extend %os;
+          display: inline-block;
+          font-weight: 600;
+          cursor: pointer;
+          &:nth-last-child(1), &:nth-last-child(2) {
+            margin-left: 19px;
+          }
+          &:nth-last-child(3), &:nth-last-child(4) {
+            margin-left: 36px;
+          }
+        }
+      }
+    }
+  &-bottom {
+    box-shadow: $shadow;
+
+    &-content {
+      @extend %content;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      //div:nth-child(1) {
+      //  margin-right: 16px;
+      //}
+      //
+      //div:nth-child(n+2) {
+      //  margin-right: 32px;
+      //}
+
+      .slogan {
+        font-family: "Open Sans", sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 18px;
+        max-width: 133px;
+
+        span {
+          color: $red;
+        }
+      }
+
+      .yamarket {
+        padding: 5px 12px;
+        box-shadow: $shadow;
+        border-radius: 6px;
+      }
+
+      .input-wrapper {
+        box-sizing: border-box;
+        border: 1px solid $ghost;
+        border-radius: 4px;
+        padding: 4px 4px 4px 0;
+        .search-input {
+          padding: 9px 0 9px 12px;
+          margin-right: 136px;
+          border: none;
+          position: relative;
+          z-index: 1;
+          &:focus {
+            outline: none;
+          }
+          &::placeholder {
+            @extend %os;
+            font-weight: 600;
+            color: #9E9E9E;
+          }
+          & + button {
+            box-sizing: border-box;
+            border: 2px solid $red;
+            border-radius: 4px;
+            @extend %os;
+            font-weight: 600;
+            color: $red;
+            background-color: #fff;
+            padding: 9px 17px 9px 16px;
+            position: relative;
+            z-index: 2;
+          }
+        }
+      }
+      .login {
+        padding: 3px 0 3px 9px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        span {
+          @extend %os;
+          font-weight: 600;
+          display: inline-block;
+          padding: 3px 0 3px 0;
+          margin-left: 10px;
+        }
+      }
+      .cart {
+        background-color: $red;
+        display: flex;
+        align-items: center;
+        padding: 9px 16px 9px 18px;
+        border-radius: 4px;
+        cursor: pointer;
+        span {
+          margin-left: 10px;
+          @extend %os;
+          font-weight: 600;
+          color: #ffffff;
+        }
+      }
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      @extend %content;
+      &-item {
+        @extend %os;
+        cursor: pointer;
+      }
+    }
+    hr {
+      background-color: $ghost;
+      opacity: 0.35;
+    }
+    .services {
+      display: flex;
+      justify-content: space-between;
+      @extend %content;
+      padding-top: 21px;
+      padding-bottom: 22px;
+      &-item {
+        @extend %os;
+        font-weight: 700;
+        cursor: pointer;
+        img {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  }
+main {
+  padding-top: 70px;
+  .intro {
+    @extend %content;
+    img {
+      width: 100%;
+      margin-bottom: 50px;
+    }
+    .text {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 70px;
+      .send-cv {
+        .your-job {
+          font-family: SF Pro Display, sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 27px;
+          line-height: 32px;
+          color: #000000;
+          margin-bottom: 40px;
+          max-width: 333px;
+        }
+        button {
+          background-color: $red;
+          padding: 12px 16px;
+          font-family: SF Pro, sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 19px;
+          letter-spacing: -0.7px;
+          color: #FFFFFF;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-bottom: 20px;
+          min-width: 280px;
+        }
+        .agreement {
+          font-family: SF Pro, sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 17px;
+          display: flex;
+          align-items: center;
+          letter-spacing: -0.7px;
+          color: #C4C4C4;
+          max-width: 240px;
+        }
+      }
+      .company-description {
+        max-width: 708px;
+        font-family: SF Pro, sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: justify;
+        letter-spacing: -0.7px;
+        color: #4D4D4D;
+        div {
+          margin-bottom: 23px;
+          span {
+            color: $red;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .about {
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: stretch;
+      @extend %content;
+      margin-bottom: 50px;
+      span {
+        font-family: SF Pro, sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        display: flex;
+        align-items: center;
+        letter-spacing: -0.7px;
+        color: $black;
+        margin-right: 22px;
+      }
+      .line {
+        opacity: 0.1;
+        border: 1px solid #000000;
+        position: relative;
+        width: auto;
+      }
+    }
+  }
+}
