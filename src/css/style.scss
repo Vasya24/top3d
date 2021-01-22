@@ -2,14 +2,23 @@
   font-family: SF Pro, sans-serif;
   src: url("./fonts/SFProDisplay-Regular.woff"), url("./fonts/SFProDisplay-Regular.woff2");
 }
-
-$red: #D2001C;
-$black: #222222;
-$ghost: #BDBDBD;
-$shadow: 0 4px 48px rgba(0, 0, 0, 0.16);
-
 %content{
   width: 1228px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin content1024 {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@mixin content768 {
+  width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin content320 {
+  width: 300px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -18,6 +27,12 @@ $shadow: 0 4px 48px rgba(0, 0, 0, 0.16);
   font-size: 13px;
   line-height: 18px;
 }
+
+$red: #D2001C;
+$black: #222222;
+$ghost: #BDBDBD;
+$shadow: 0 4px 48px rgba(0, 0, 0, 0.16);
+
 * {
   margin: 0;
   padding: 0;
@@ -40,6 +55,40 @@ body {
         padding: 7px 14px;
         display: flex;
         justify-content: space-between;
+        @media (min-width: 1024px) and (max-width: 1259px) {
+          @include content1024
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          @include content768;
+          .feedback {
+            display: none
+          }
+        }
+        @media (max-width: 767px) {
+          @include content320;
+          .feedback {
+            display: none;
+          }
+        }
+
+        .burger {
+          display: none;
+          @media (max-width: 1023px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 15px;
+            width: 25px;
+            cursor: pointer;
+            hr {
+              position: relative;
+              width: 100%;
+              height: 3px;
+              border: none;
+              background-color: #000;
+            }
+          }
+        }
       }
       .contacts {
         &-item {
@@ -57,6 +106,9 @@ body {
           }
           &.schedule {
             margin-left: 20px;
+          }
+          @media (max-width: 767px) {
+            font-size: 8px;
           }
         }
       }
@@ -78,21 +130,44 @@ body {
     }
   &-bottom {
     box-shadow: $shadow;
-
     &-content {
       @extend %content;
       padding: 14px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      //div:nth-child(1) {
-      //  margin-right: 16px;
-      //}
-      //
-      //div:nth-child(n+2) {
-      //  margin-right: 32px;
-      //}
-
+      @media (min-width: 1024px) and (max-width: 1259px) {
+        @include content1024
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        @include content768
+      }
+      @media (max-width: 767px) {
+        @include content320;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        .logo {
+          order: 1;
+        }
+        .slogan {
+          order: 2
+        }
+        .yamarket {
+          order: 4;
+          margin-bottom: 15px;
+        }
+        .input-wrapper {
+          order: 3;
+          width: 90%;
+          margin-bottom: 15px;
+        }
+        .login {
+          order: 5
+        }
+        .cart {
+          order: 6
+        }
+      }
       .slogan {
         font-family: "Open Sans", sans-serif;
         font-style: italic;
@@ -100,18 +175,15 @@ body {
         font-size: 13px;
         line-height: 18px;
         max-width: 133px;
-
         span {
           color: $red;
         }
       }
-
       .yamarket {
         padding: 5px 12px;
         box-shadow: $shadow;
         border-radius: 6px;
       }
-
       .input-wrapper {
         box-sizing: border-box;
         border: 1px solid $ghost;
@@ -123,6 +195,9 @@ body {
           border: none;
           position: relative;
           z-index: 1;
+          @media (max-width: 767px) {
+            margin-right: 28px;
+          }
           &:focus {
             outline: none;
           }
@@ -130,6 +205,9 @@ body {
             @extend %os;
             font-weight: 600;
             color: #9E9E9E;
+            @media (max-width: 767px) {
+              font-size: 8px;
+            }
           }
           & + button {
             box-sizing: border-box;
@@ -142,7 +220,14 @@ body {
             padding: 9px 17px 9px 16px;
             position: relative;
             z-index: 2;
+            @media (max-width: 767px) {
+              padding: 4px 12px 4px 10px;
+            }
           }
+
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          display: none
         }
       }
       .login {
@@ -178,9 +263,23 @@ body {
       justify-content: space-between;
       margin-bottom: 22px;
       @extend %content;
+      @media (min-width: 1024px) and (max-width: 1259px) {
+        @include content1024
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        @include content768
+      }
+      @media (max-width: 767px) {
+        @include content320;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
       &-item {
         @extend %os;
         cursor: pointer;
+        @media (max-width: 767px) {
+          font-size: 10px
+        }
       }
     }
     hr {
@@ -193,10 +292,32 @@ body {
       @extend %content;
       padding-top: 21px;
       padding-bottom: 22px;
+      @media (min-width: 1024px) and (max-width: 1259px) {
+        @include content1024
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        @include content768
+      }
+      @media (max-width: 767px) {
+        @include content320;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
       &-item {
         @extend %os;
         font-weight: 700;
         cursor: pointer;
+        @media (min-width: 1024px) and (max-width: 1259px) {
+          font-size: 10px;
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          font-size: 8px;
+        }
+        @media (max-width: 767px) {
+          font-size: 8px;
+          margin-bottom: 4px;
+          margin-right: 4px;
+        }
         img {
           margin-left: 5px;
         }
@@ -206,8 +327,23 @@ body {
   }
 main {
   padding-top: 70px;
+  @media screen and (min-width: 1024px) and (max-width: 1259px) {
+    @include content1024
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    @include content768
+  }
   .intro {
     @extend %content;
+    @media screen and (min-width: 1024px) and (max-width: 1259px) {
+      @include content1024;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      @include content768
+    }
+    @media screen and (max-width: 767px) {
+      @include content320;
+    }
     img {
       width: 100%;
       margin-bottom: 50px;
@@ -216,6 +352,10 @@ main {
       display: flex;
       justify-content: space-between;
       margin-bottom: 70px;
+      @media screen and (max-width: 767px) {
+        flex-direction: column;
+        text-align: center;
+      }
       .send-cv {
         .your-job {
           font-family: SF Pro Display, sans-serif;
@@ -254,6 +394,10 @@ main {
           letter-spacing: -0.7px;
           color: #C4C4C4;
           max-width: 240px;
+          @media screen and (max-width: 767px) {
+            max-width: unset;
+            margin-bottom: 30px;
+          }
         }
       }
       .company-description {
@@ -266,6 +410,16 @@ main {
         text-align: justify;
         letter-spacing: -0.7px;
         color: #4D4D4D;
+        @media screen and (min-width: 1024px) and (max-width: 1259px) {
+          max-width: 600px;
+        }
+        @media screen and (min-width: 768px) and (max-width: 1023px) {
+          max-width: 400px;
+        }
+        @media screen and (max-width: 767px) {
+          max-width: unset;
+          text-align: center;
+        }
         div {
           margin-bottom: 23px;
           span {
@@ -284,6 +438,16 @@ main {
       justify-content: stretch;
       @extend %content;
       margin-bottom: 50px;
+      @media screen and (min-width: 1024px) and (max-width: 1259px) {
+        @include content1024
+      }
+      @media screen and (min-width: 768px) and (max-width: 1023px) {
+        @include content768
+      }
+      @media screen and (max-width: 767px) {
+        @include content320;
+        flex-direction: column;
+      }
       span {
         font-family: SF Pro, sans-serif;
         font-style: normal;
@@ -303,5 +467,113 @@ main {
         width: auto;
       }
     }
+    .links {
+      @extend %content;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 70px;
+      @media screen and (min-width: 1024px) and (max-width: 1259px) {
+        @include content1024;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1023px) {
+        @include content768
+      }
+      @media screen and (max-width: 767px) {
+        @include content320;
+        flex-direction: column;
+      }
+
+        div {
+          font-family: SF Pro, sans-serif;
+          text-decoration: underline;
+          font-size: 16px;
+          line-height: 19px;
+          cursor: pointer;
+          img {
+            filter: brightness(0);
+          }
+          &:hover {
+            color: $red;
+            img {
+              filter: none;
+            }
+          }
+          @media (max-width: 767px) {
+            margin-bottom: 15px;
+          }
+      }
+    }
+    .videos {
+      padding-top: 70px;
+      padding-bottom: 63px;
+      background-color: #F9F9F9;
+      &-content {
+        @extend %content;
+        @media screen and (min-width: 1024px) and (max-width: 1259px) {
+          @include content1024;
+        }
+        @media screen and (min-width: 768px) and (max-width: 1023px) {
+          @include content768
+        }
+        @media screen and (max-width: 767px) {
+          @include content320;
+        }
+        .videos-header {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 54px;
+          @media screen and (max-width: 1259px) {
+            justify-content: center;
+          }
+          h2 {
+            font-family: SF Pro Display, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 36px;
+            line-height: 43px;
+            color: $black;
+          }
+          .slider-controls {
+            display: flex;
+            @media screen and (max-width: 1259px) {
+              display: none;
+            }
+            div {
+              border: 1px solid #E5E5E5;
+              box-sizing: border-box;
+              padding-top: 11px;
+              padding-bottom: 11px;
+              cursor: pointer;
+              &.prev {
+                padding-left: 13px;
+                padding-right: 18px;
+              }
+              &.next {
+                padding-left: 16px;
+                padding-right: 15px;
+              }
+            }
+          }
+        }
+        .youtubes {
+          display: flex;
+          justify-content: space-between;
+          @media screen and (max-width: 1259px) {
+            flex-direction: column;
+            align-items: center;
+            iframe:nth-child(1) {
+              margin-bottom: 30px;
+            }
+          }
+          @media screen and (max-width: 767px) {
+            iframe {
+              max-width: 300px
+            }
+          }
+
+        }
+      }
+    }
+
   }
 }
